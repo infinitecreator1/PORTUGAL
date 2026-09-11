@@ -1,0 +1,17 @@
+{
+  "results": [
+    {
+      "id": "78321",
+      "slug": "apartamento-t3-campo-de-ourique-78321",
+      "title": "Apartamento T3 em Campo de Ourique",
+      "estate_type": "apartment",
+      "transaction_type": "sell",
+      "location": { "district": "Lisboa", "municipality": "Lisboa", "parish": "Campo de Ourique" },
+      "images": ["https://img.example.org/78321-1.jpg", "https://img.example.org/78321-2.jpg"],
+      "price": { "value": 745000, "currency": "EUR" },
+      "area": 118,
+      "rooms": 3
+    }
+  ],
+  "pagination": { "total_count": 41, "page_count": 3, "current_page": 1 }
+}

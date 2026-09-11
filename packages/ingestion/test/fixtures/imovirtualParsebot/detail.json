@@ -1,0 +1,14 @@
+{
+  "id": "78321",
+  "slug": "apartamento-t3-campo-de-ourique-78321",
+  "estate_type": "apartment",
+  "transaction_type": "sell",
+  "location": { "district": "Lisboa", "municipality": "Lisboa", "parish": "Campo de Ourique", "address": "Rua Ferreira Borges" },
+  "images": ["https://img.example.org/78321-1.jpg", "https://img.example.org/78321-2.jpg"],
+  "price": { "value": 745000, "currency": "EUR" },
+  "area": 118,
+  "rooms": 3,
+  "characteristics": ["Varanda", "Elevador", "Garagem"],
+  "description": "Apartamento T3 remodelado em Campo de Ourique, com varanda e garagem.",
+  "agency": { "name": "Marta Silva", "agency_name": "Lisboa Prime Mediação", "id": "lisboa-prime", "phone": "+351912345678", "email": "marta.silva@example.org" }
+}

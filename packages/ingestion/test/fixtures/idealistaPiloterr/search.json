@@ -1,0 +1,26 @@
+{
+  "results": [
+    {
+      "url": "https://www.idealista.pt/imovel/33445566/",
+      "title": "Apartamento T2 para comprar em Foz do Douro",
+      "price": { "value": 520000 },
+      "currency": "EUR",
+      "operation": "sale",
+      "propertyType": "flat",
+      "district": "Porto",
+      "municipality": "Porto",
+      "address": "Rua do Passeio Alegre",
+      "details": [
+        { "bedrooms": 2 },
+        { "surface": 92 },
+        { "floor": "5" }
+      ],
+      "picture": "https://img.example.org/33445566-1.jpg",
+      "description": "T2 com vista de mar na Foz do Douro (descrição truncada)...",
+      "listing_company": "Foz Imobiliária",
+      "listing_company_url": "https://www.idealista.pt/agencia/foz-imobiliaria",
+      "parking_included": true
+    }
+  ],
+  "pagination": { "current": 1, "next": "https://api.piloterr.com/v2/idealista/search?query=next-page-url", "total": 12, "has_next": true }
+}

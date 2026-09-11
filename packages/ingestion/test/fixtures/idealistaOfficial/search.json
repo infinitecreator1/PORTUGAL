@@ -1,0 +1,28 @@
+{
+  "elementList": [
+    {
+      "propertyCode": "98765432",
+      "price": 745000,
+      "size": 118,
+      "rooms": 3,
+      "bathrooms": 2,
+      "floor": "3",
+      "address": "Rua Ferreira Borges",
+      "municipality": "Lisboa",
+      "district": "Campo de Ourique",
+      "province": "Lisboa",
+      "latitude": 38.7167,
+      "longitude": -9.1667,
+      "thumbnail": "https://img.example.org/98765432-1.jpg",
+      "hasLift": true,
+      "description": "Apartamento T3 remodelado em Campo de Ourique, com varanda e garagem.",
+      "operation": "sale",
+      "propertyType": "flat",
+      "status": "renew"
+    }
+  ],
+  "total": 1,
+  "totalPages": 1,
+  "actualPage": 1,
+  "itemsPerPage": 20
+}

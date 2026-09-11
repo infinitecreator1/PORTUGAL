@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listings>
+  <listing>
+    <source_id>XML-2026-0001</source_id>
+    <transaction>sale</transaction>
+    <property_type>apartamento</property_type>
+    <typology>T3</typology>
+    <price>320000</price>
+    <price_period>total</price_period>
+    <area_gross>140</area_gross>
+    <area_useful>125</area_useful>
+    <floor>2</floor>
+    <year_built>2005</year_built>
+    <bathrooms>2</bathrooms>
+    <condition>usado</condition>
+    <district>Braga</district>
+    <municipality>Braga</municipality>
+    <parish>Maximinos</parish>
+    <address>Rua do Souto</address>
+    <postal_code>4700-000</postal_code>
+    <lat>41.5518</lat>
+    <lng>-8.4229</lng>
+    <energy_certificate>C</energy_certificate>
+    <agent_name>Joana Pires</agent_name>
+    <agency>Braga Casas</agency>
+    <agency_id>braga-casas</agency_id>
+    <agent_phone>+351911000111</agent_phone>
+    <agent_email>joana@example.org</agent_email>
+    <description>Apartamento T3 no centro de Braga.</description>
+    <features>
+      <feature>Elevador</feature>
+      <feature>Garagem</feature>
+      <feature>Arrecadação</feature>
+    </features>
+    <photos>
+      <photo url="https://example.org/xml-0001-1.jpg" room="sala"/>
+      <photo url="https://example.org/xml-0001-2.jpg" room="cozinha"/>
+    </photos>
+  </listing>
+  <listing>
+    <source_id>XML-2026-0002</source_id>
+    <transaction>rent</transaction>
+    <property_type>apartamento</property_type>
+    <typology>T1</typology>
+    <price>900</price>
+    <price_period>month</price_period>
+    <area_useful>55</area_useful>
+    <floor>1</floor>
+    <condition>novo</condition>
+    <district>Porto</district>
+    <municipality>Porto</municipality>
+    <parish>Cedofeita</parish>
+    <postal_code>4050-000</postal_code>
+    <agency_id>porto-rentals</agency_id>
+    <description>T1 mobilado em Cedofeita.</description>
+    <features>
+      <feature>Mobilado</feature>
+    </features>
+    <photos>
+      <photo url="https://example.org/xml-0002-1.jpg" room="sala"/>
+    </photos>
+  </listing>
+</listings>

@@ -1,0 +1,19 @@
+{
+  "id": "cf-100234",
+  "url": "https://app.casafari.com/listings/cf-100234",
+  "operation": "sale",
+  "property_type": "apartment",
+  "typology": "T4",
+  "asking_price": 1490000,
+  "gross_area": 320,
+  "useful_area": 280,
+  "bedrooms": 4,
+  "condition": "usado",
+  "location": { "district": "Lisboa", "municipality": "Cascais", "parish": "Cascais e Estoril", "neighbourhood": "Birre" },
+  "address": "Rua das Amoreiras",
+  "energy_certificate": "A",
+  "features": ["Jardim", "Piscina", "Garagem", "Painéis solares", "Aquecimento central", "Lareira", "Condomínio fechado", "Alarme"],
+  "photos": ["https://img.example.org/cf-100234-1.jpg", "https://img.example.org/cf-100234-2.jpg"],
+  "agent": { "id": "cascais-living", "name": "Cascais Living", "phone": "+351933222333", "email": "ana@example.org" },
+  "description": "Moradia T4 em condomínio fechado em Birre com piscina, jardim e painéis solares."
+}
