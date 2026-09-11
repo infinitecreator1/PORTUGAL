@@ -15,7 +15,6 @@
   },
   "dependencies": {
     "@imovel/core": "workspace:*",
-    "@imovel/llm": "workspace:*",
     "execa": "catalog:",
     "zod": "catalog:"
   },

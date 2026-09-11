@@ -83,6 +83,9 @@ importers:
       '@imovel/observability':
         specifier: workspace:*
         version: link:../../packages/observability
+      '@imovel/pipeline':
+        specifier: workspace:*
+        version: link:../../packages/pipeline
       '@imovel/ptpt-qa':
         specifier: workspace:*
         version: link:../../packages/ptpt-qa
@@ -135,6 +138,9 @@ importers:
       '@imovel/observability':
         specifier: workspace:*
         version: link:../../packages/observability
+      '@imovel/pipeline':
+        specifier: workspace:*
+        version: link:../../packages/pipeline
       '@imovel/ptpt-qa':
         specifier: workspace:*
         version: link:../../packages/ptpt-qa
@@ -184,6 +190,9 @@ importers:
       '@imovel/observability':
         specifier: workspace:*
         version: link:../../packages/observability
+      '@imovel/pipeline':
+        specifier: workspace:*
+        version: link:../../packages/pipeline
       '@imovel/ptpt-qa':
         specifier: workspace:*
         version: link:../../packages/ptpt-qa
@@ -350,6 +359,46 @@ importers:
         specifier: 'catalog:'
         version: 2.1.9(@types/node@22.20.2)
 
+  packages/pipeline:
+    dependencies:
+      '@imovel/core':
+        specifier: workspace:*
+        version: link:../core
+      '@imovel/db':
+        specifier: workspace:*
+        version: link:../db
+      '@imovel/ingestion':
+        specifier: workspace:*
+        version: link:../ingestion
+      '@imovel/llm':
+        specifier: workspace:*
+        version: link:../llm
+      '@imovel/observability':
+        specifier: workspace:*
+        version: link:../observability
+      '@imovel/ptpt-qa':
+        specifier: workspace:*
+        version: link:../ptpt-qa
+      '@imovel/storage':
+        specifier: workspace:*
+        version: link:../storage
+      '@imovel/tts':
+        specifier: workspace:*
+        version: link:../tts
+      zod:
+        specifier: 'catalog:'
+        version: 3.25.76
+    devDependencies:
+      '@types/node':
+        specifier: 'catalog:'
+        version: 22.20.2
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.3
+      vitest:
+        specifier: 'catalog:'
+        version: 2.1.9(@types/node@22.20.2)
+
   packages/ptpt-qa:
     dependencies:
       '@imovel/core':
@@ -408,9 +457,6 @@ importers:
       '@imovel/core':
         specifier: workspace:*
         version: link:../core
-      '@imovel/llm':
-        specifier: workspace:*
-        version: link:../llm
       execa:
         specifier: 'catalog:'
         version: 9.6.1
