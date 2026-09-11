@@ -50,7 +50,7 @@ export async function generateStep(deps: PipelineDeps, payload: GeneratePayload)
         model: out.model,
         usage: out.usage,
       });
-      return { result: out, usage: { ...out.usage, model: out.model }, cost_usd: cost };
+      return { result: out, usage: { ...out.usage, model: out.model }, cost_usd: cost.cost_usd };
     });
 
     const pre = preValidateFacts(listing, output.result);

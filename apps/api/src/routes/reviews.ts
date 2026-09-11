@@ -4,7 +4,7 @@ import { z } from "zod";
 import { GenerationResult, NotFoundError, QUEUES, newId, sectionsToText, sha256 } from "@imovel/core";
 import type { PipelineDeps } from "@imovel/pipeline";
 
-export function registerReviewRoutes(app: FastifyInstance & { withTypeProvider<T>(): unknown }, deps: PipelineDeps): void {
+export function registerReviewRoutes(app: FastifyInstance, deps: PipelineDeps): void {
   const r = app.withTypeProvider<ZodTypeProvider>() as FastifyInstance;
 
   r.get("/reviews", { schema: { querystring: z.object({ status: z.enum(["open", "approved", "rejected"]).default("open") }) } }, async (req) => {

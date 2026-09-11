@@ -11,7 +11,7 @@ const CreateWebhookBody = z.object({
   secret: z.string().min(16).optional(),
 });
 
-export function registerWebhookRoutes(app: FastifyInstance & { withTypeProvider<T>(): unknown }, deps: PipelineDeps): void {
+export function registerWebhookRoutes(app: FastifyInstance, deps: PipelineDeps): void {
   const r = app.withTypeProvider<ZodTypeProvider>() as FastifyInstance;
 
   r.post("/webhooks", { schema: { body: CreateWebhookBody } }, async (req, reply) => {

@@ -25,13 +25,14 @@ export async function buildServer(deps: PipelineDeps, opts: { logger?: boolean }
   });
   await app.register(rateLimit, { max: 120, timeWindow: "1 minute" });
 
-  app.setErrorHandler((err, _req, reply) => {
+  app.setErrorHandler((err: unknown, _req, reply) => {
     if (err instanceof PipelineError) {
       return reply.code(err.status ?? 500).send({ error: err.message, code: err.code, details: err.details });
     }
-    const status = (err as { statusCode?: number }).statusCode ?? 500;
-    if (status >= 500) deps.logger.error({ err }, "unhandled error");
-    return reply.code(status).send({ error: status >= 500 ? "Internal error" : err.message });
+    const e = err as Error & { statusCode?: number };
+    const status = e.statusCode ?? 500;
+    if (status >= 500) deps.logger.error({ err: e }, "unhandled error");
+    return reply.code(status).send({ error: status >= 500 ? "Internal error" : e.message });
   });
 
   app.get("/health", async () => ({ ok: true, providers: { llm: deps.cfg.LLM_PROVIDER, editor: deps.cfg.GATE_EDITOR, tts: deps.cfg.TTS_PROVIDER, storage: deps.cfg.STORAGE_PROVIDER } }));

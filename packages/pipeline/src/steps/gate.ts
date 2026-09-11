@@ -46,20 +46,22 @@ export async function gateStep(deps: PipelineDeps, payload: GatePayload): Promis
         usage: { input_tokens: res.report.usage.editor_input_tokens, output_tokens: res.report.usage.editor_output_tokens },
       });
       const judgeCost = deps.judge
-        ? await recordLlmUsage(deps.ledger, {
-            tenant_id: job.tenant_id,
-            job_id: job.id,
-            step: "judge",
-            provider: deps.judge.provider,
-            model: deps.cfg.JUDGE_MODEL,
-            usage: { input_tokens: res.report.usage.judge_input_tokens, output_tokens: res.report.usage.judge_output_tokens },
-          })
+        ? (
+            await recordLlmUsage(deps.ledger, {
+              tenant_id: job.tenant_id,
+              job_id: job.id,
+              step: "judge",
+              provider: deps.judge.provider,
+              model: deps.cfg.JUDGE_MODEL,
+              usage: { input_tokens: res.report.usage.judge_input_tokens, output_tokens: res.report.usage.judge_output_tokens },
+            })
+          ).cost_usd
         : 0;
       return {
         result: res,
         output_ref: res.report.id,
         usage: { decision: res.report.decision, judge: res.report.judge?.pt_pt_score ?? null, changes: res.report.changes.length },
-        cost_usd: editorCost + judgeCost,
+        cost_usd: editorCost.cost_usd + judgeCost,
         input_hash: res.report.input_hash,
       };
     });

@@ -1,6 +1,6 @@
 import { NotFoundError, QUEUES, ValidationError, newId, sha256 } from "@imovel/core";
 import { narrate, normalizeForSpeech } from "@imovel/tts";
-import { metrics, recordGpuUsage, recordTtsUsage } from "@imovel/observability";
+import { recordTtsUsage } from "@imovel/observability";
 import type { NarratePayload, NextAction, PipelineDeps } from "../deps";
 import { loadJobAndListing } from "./generate";
 import { moveJob, recordStep } from "../stepRecorder";
@@ -40,13 +40,14 @@ export async function narrateStep(deps: PipelineDeps, payload: NarratePayload): 
       accentJudge: deps.accentJudge,
       now: deps.now,
     });
-    const cost =
-      out.narration.usage.gpu_seconds != null
-        ? await recordGpuUsage(deps.ledger, { tenant_id: job.tenant_id, job_id: job.id, step: "narrate", provider: deps.tts.id, gpu_seconds: out.narration.usage.gpu_seconds })
-        : await recordTtsUsage(deps.ledger, { tenant_id: job.tenant_id, job_id: job.id, step: "narrate", provider: deps.tts.id, chars: out.narration.usage.chars });
-    metrics.counter("tts_chars_total", { provider: deps.tts.id }).inc(out.narration.usage.chars);
-    metrics.counter("tts_audio_seconds_total", { provider: deps.tts.id }).inc(out.narration.duration_s);
-    return { result: out, output_ref: out.narration.wav_key, usage: { chars: out.narration.usage.chars, duration_s: out.narration.duration_s }, cost_usd: cost, input_hash: textHash };
+    const cost = await recordTtsUsage(deps.ledger, {
+      tenant_id: job.tenant_id,
+      job_id: job.id,
+      step: "narrate",
+      provider: deps.tts.id,
+      usage: { chars: out.narration.usage.chars, gpu_seconds: out.narration.usage.gpu_seconds, audio_seconds: out.narration.duration_s },
+    });
+    return { result: out, output_ref: out.narration.wav_key, usage: { chars: out.narration.usage.chars, duration_s: out.narration.duration_s }, cost_usd: cost.cost_usd, input_hash: textHash };
   });
 
   await deps.repos.narrations.save(narration);

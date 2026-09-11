@@ -55,12 +55,14 @@ export async function emitWebhook(deps: PipelineDeps, tenantId: string, event: W
     }
     await deps.repos.webhooks.recordDelivery({
       id: newId(),
+      tenant_id: tenantId,
       webhook_id: hook.id,
       event,
-      payload: envelope,
+      payload: { ...envelope },
       status,
       attempts: 1,
       last_error: lastError,
+      next_attempt_at: null,
       created_at: deps.now().toISOString(),
     });
     if (status === "failed") deps.logger.warn({ webhook_id: hook.id, event, error: lastError }, "webhook delivery failed");

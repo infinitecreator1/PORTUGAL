@@ -13,7 +13,7 @@ const ImportBody = z.object({
   run: z.boolean().default(true),
 });
 
-export function registerListingRoutes(app: FastifyInstance & { withTypeProvider<T>(): unknown }, deps: PipelineDeps): void {
+export function registerListingRoutes(app: FastifyInstance, deps: PipelineDeps): void {
   const r = app.withTypeProvider<ZodTypeProvider>() as FastifyInstance;
 
   r.post("/listings/import", { schema: { body: ImportBody } }, async (req, reply) => {

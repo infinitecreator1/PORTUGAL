@@ -4,7 +4,7 @@ import { z } from "zod";
 import { GenerationProfile, VoiceProfile, newId } from "@imovel/core";
 import type { PipelineDeps } from "@imovel/pipeline";
 
-export function registerProfileRoutes(app: FastifyInstance & { withTypeProvider<T>(): unknown }, deps: PipelineDeps): void {
+export function registerProfileRoutes(app: FastifyInstance, deps: PipelineDeps): void {
   const r = app.withTypeProvider<ZodTypeProvider>() as FastifyInstance;
 
   r.get("/profiles/generation", async (req) => deps.repos.profiles.getGeneration(req.tenantId, null));

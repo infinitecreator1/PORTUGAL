@@ -11,7 +11,7 @@ const CreateJobBody = z.object({
   require_audio: z.boolean().optional(),
 });
 
-export function registerJobRoutes(app: FastifyInstance & { withTypeProvider<T>(): unknown }, deps: PipelineDeps): void {
+export function registerJobRoutes(app: FastifyInstance, deps: PipelineDeps): void {
   const r = app.withTypeProvider<ZodTypeProvider>() as FastifyInstance;
 
   r.post("/jobs", { schema: { body: CreateJobBody } }, async (req, reply) => {

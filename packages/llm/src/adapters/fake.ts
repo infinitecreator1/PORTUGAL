@@ -7,8 +7,8 @@ import type {
   LLMClient,
 } from "@imovel/core";
 import { TimeoutError, UpstreamError } from "@imovel/core";
-import { sampleGenerationResult } from "@imovel/core/fixtures";
-import { splitEditUserMessage } from "../prompts/edit";
+import { EDIT_HINTS_LABEL, splitEditUserMessage } from "../prompts/edit";
+import { fakeGenerateFromMessage } from "./fakeGenerator";
 
 /**
  * Deterministic pt-BR → pt-PT replacements used by the fake editor and judge. Ordered so that
@@ -100,15 +100,37 @@ export function fakeJudge(text: string): JudgeResult {
   };
 }
 
-/** Routes on `req.extra.purpose`: generate → fixture JSON; edit → fixed text; judge → verdict; else "ok". */
+/**
+ * Parses the mandatory hints block ("Corrige obrigatoriamente: a → b; c → d.") and applies each
+ * replacement, whole-phrase, accent-aware and case-insensitive. Lets the fake editor honour the
+ * lexicon hints the gate passes on a strict retry, exactly like a cooperative AMALIA would.
+ */
+export function applyHintFixes(text: string, instructions: string | null): string {
+  if (!instructions) return text;
+  const at = instructions.indexOf(EDIT_HINTS_LABEL);
+  if (at === -1) return text;
+  const list = instructions.slice(at + EDIT_HINTS_LABEL.length).replace(/\.\s*$/, "");
+  let out = text;
+  for (const item of list.split(";")) {
+    const [from, to] = item.split("→").map((x) => x.trim());
+    if (!from || to === undefined) continue;
+    const regex = new RegExp(`(?<![\\p{L}\\p{N}])${escapeRegExp(from)}(?![\\p{L}\\p{N}])`, "giu");
+    out = out.replace(regex, (matched: string) => preserveCase(matched, to));
+  }
+  return out;
+}
+
+/** Routes on `req.extra.purpose`: generate → templated copy for the listing; edit → fixed text; judge → verdict; else "ok". */
 export function defaultFakeResponder(req: ChatRequest): string {
   const purpose = req.extra?.purpose;
   const lastUser = [...req.messages].reverse().find((m) => m.role === "user")?.content ?? "";
   switch (purpose) {
     case "generate":
-      return JSON.stringify(sampleGenerationResult());
-    case "edit":
-      return applyFakePtPtFixes(splitEditUserMessage(lastUser).text);
+      return JSON.stringify(fakeGenerateFromMessage(lastUser));
+    case "edit": {
+      const { text, instructions } = splitEditUserMessage(lastUser);
+      return applyFakePtPtFixes(applyHintFixes(text, instructions));
+    }
     case "judge":
       return JSON.stringify(fakeJudge(lastUser));
     default:

@@ -3,7 +3,7 @@ import { createRepos } from "@imovel/db";
 import { createEditor, createGenerator, createLLMClient } from "@imovel/llm";
 import { CompositeCostLedger, LoggingCostLedger, createLogger, type Logger } from "@imovel/observability";
 import { createObjectStore } from "@imovel/storage";
-import { FakeAccentJudge, createTTSProvider } from "@imovel/tts";
+import { createTTSProvider } from "@imovel/tts";
 import type { PipelineDeps } from "./deps";
 
 export interface BuiltDeps extends PipelineDeps {
@@ -21,7 +21,9 @@ export async function buildDeps(cfg: Config, opts: { logger?: Logger; fetch?: ty
   const judge = opts.judge === false ? null : createLLMClient(cfg, "judge", { fetch: f });
   const tts = createTTSProvider(cfg, { fetch: f, getReferenceAudio: (key: string) => store.get(key) });
   const ledger = new CompositeCostLedger([new LoggingCostLedger(logger), repos.costs]);
-  const accentJudge = cfg.TTS_PROVIDER === "fake" ? new FakeAccentJudge() : null;
+  // Accent QA needs a transcriber that hears the audio; the RunPod Whisper judge is wired in
+  // production once the VoxCPM2 endpoint exposes `op: transcribe`. Off by default (MVP).
+  const accentJudge = null;
 
   return {
     cfg,

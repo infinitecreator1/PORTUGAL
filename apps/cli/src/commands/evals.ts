@@ -143,7 +143,6 @@ export async function evalAccent(opts: { file?: string; out?: string } = {}): Pr
   const deps = await buildDeps(cfg, { logger: createLogger({ level: "warn" }) });
   const sentences = readJson<AccentSentence[]>(opts.file ?? join(repoRoot(), "evals", "accent", "sentences.json"));
   const profile = (await deps.repos.profiles.getVoice(cfg.DEFAULT_TENANT_ID, null)) ?? sampleVoiceProfile({ provider: cfg.TTS_PROVIDER });
-  const judge = deps.accentJudge ?? new FakeAccentJudge();
   const rows: Array<Record<string, string | number | boolean | null>> = [];
   let european = 0;
   try {
@@ -160,6 +159,9 @@ export async function evalAccent(opts: { file?: string; out?: string } = {}): Pr
         now: deps.now,
       });
       const wav = await deps.store.get(narration.wav_key);
+      // With the fake voice there is no audio to transcribe: the fake judge echoes the text so the
+      // plumbing (normalisation, WER, thresholds) is exercised. Real providers need a real judge.
+      const judge = deps.accentJudge ?? new FakeAccentJudge(narration.text_normalized);
       const qa = await runAccentQa(wav, narration.text_normalized, judge);
       if (qa.ok) european++;
       rows.push({ id: s.id, wer: qa.wer, european: qa.european_confidence, ok: qa.ok, wav: narration.wav_key });

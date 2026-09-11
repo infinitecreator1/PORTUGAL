@@ -1,5 +1,5 @@
 import type { Job, JobStatus, JobStep } from "@imovel/core";
-import { newId, toErrorRecord } from "@imovel/core";
+import { toErrorRecord } from "@imovel/core";
 import type { PipelineDeps } from "./deps";
 import { assertTransition } from "./stateMachine";
 
@@ -27,11 +27,9 @@ export async function recordStep<T>(
   body: () => Promise<{ result: T; output_ref?: string | null; usage?: Record<string, unknown>; cost_usd?: number; input_hash?: string | null }>,
 ): Promise<T> {
   const started_at = deps.now().toISOString();
-  const id = newId();
   try {
     const out = await body();
     await deps.repos.jobs.addStep({
-      id,
       job_id: job.id,
       step,
       attempt,
@@ -47,7 +45,6 @@ export async function recordStep<T>(
     return out.result;
   } catch (err) {
     await deps.repos.jobs.addStep({
-      id,
       job_id: job.id,
       step,
       attempt,

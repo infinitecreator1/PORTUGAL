@@ -12,3 +12,4 @@ export * from "./prompts/edit";
 export * from "./generator";
 export * from "./editor";
 export * from "./factory";
+export * from "./adapters/fakeGenerator";
