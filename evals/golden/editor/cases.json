@@ -1,0 +1,122 @@
+[
+  {
+    "id": "banheiro-terreo",
+    "field": "descricao",
+    "input": "Este apartamento T2 de 85 m² fica no térreo de um prédio de 1975 em Alvalade. Tem dois banheiros, cozinha equipada e uma vaga de garagem. O preço é de 420 000 €.",
+    "expected_fixes": [
+      { "from": "térreo", "to": "rés-do-chão" },
+      { "from": "banheiros", "to": "casas de banho" },
+      { "from": "vaga de garagem", "to": "lugar de garagem" }
+    ],
+    "protected_facts": ["T2", "85 m²", "1975", "Alvalade", "420 000 €"]
+  },
+  {
+    "id": "gerundio-voce",
+    "field": "descricao",
+    "input": "Estamos oferecendo esta moradia T4 com 260 m² em Cascais. Você vai adorar o jardim e a piscina. A gente recomenda uma visita rápida porque está vendendo depressa.",
+    "expected_fixes": [
+      { "from": "Estamos oferecendo", "to": "Oferecemos" },
+      { "from": "Você vai adorar", "to": "Vai adorar" },
+      { "from": "A gente recomenda", "to": "Recomendamos" },
+      { "from": "está vendendo", "to": "está a vender" }
+    ],
+    "protected_facts": ["T4", "260 m²", "Cascais"]
+  },
+  {
+    "id": "aluguel-mobiliado",
+    "field": "resumo",
+    "input": "Apartamento T1 mobiliado para aluguel por 950 €/mês em Faro, pronto para morar, próximo ao shopping e ao ponto de ônibus.",
+    "expected_fixes": [
+      { "from": "mobiliado", "to": "mobilado" },
+      { "from": "aluguel", "to": "arrendamento" },
+      { "from": "pronto para morar", "to": "pronto a habitar" },
+      { "from": "shopping", "to": "centro comercial" },
+      { "from": "ponto de ônibus", "to": "paragem de autocarro" }
+    ],
+    "protected_facts": ["T1", "950 €/mês", "Faro"]
+  },
+  {
+    "id": "ortografia-ao90",
+    "field": "localizacao",
+    "input": "A zona é econômica e bem servida: o registro predial está em dia, o contato com a câmara é direto e, de fato, a recepção do condomínio funciona 24 horas.",
+    "expected_fixes": [
+      { "from": "econômica", "to": "económica" },
+      { "from": "registro", "to": "registo" },
+      { "from": "contato", "to": "contacto" },
+      { "from": "de fato", "to": "de facto" },
+      { "from": "recepção", "to": "receção" }
+    ],
+    "protected_facts": ["24 horas"]
+  },
+  {
+    "id": "reformado-dormitorios",
+    "field": "descricao",
+    "input": "Imóvel reformado em 2020 com três dormitórios, suíte com closet, lavanderia e cozinha americana planejada. Piso laminado em todos os cômodos e esquadrias de alumínio. 118 m² úteis.",
+    "expected_fixes": [
+      { "from": "reformado", "to": "remodelado" },
+      { "from": "dormitórios", "to": "quartos" },
+      { "from": "lavanderia", "to": "lavandaria" },
+      { "from": "cozinha americana", "to": "cozinha em open space" },
+      { "from": "planejada", "to": "por medida" },
+      { "from": "Piso laminado", "to": "Pavimento flutuante" },
+      { "from": "cômodos", "to": "divisões" },
+      { "from": "esquadrias", "to": "caixilharia" }
+    ],
+    "protected_facts": ["2020", "118 m²"]
+  },
+  {
+    "id": "cta-possessivo",
+    "field": "cta",
+    "input": "Agende sua visita hoje mesmo e venha conhecer esse imóvel com a nossa equipe.",
+    "expected_fixes": [
+      { "from": "Agende sua visita", "to": "Agende a sua visita" },
+      { "from": "esse imóvel", "to": "este imóvel" },
+      { "from": "equipe", "to": "equipa" }
+    ],
+    "protected_facts": []
+  },
+  {
+    "id": "alto-padrao-gourmet",
+    "field": "destaques",
+    "input": "Condomínio de alto padrão com portaria 24h\nVaranda gourmet com churrasqueira\nAcademia e playground\nGás encanado e aquecedor a gás\nIPTU em dia",
+    "expected_fixes": [
+      { "from": "alto padrão", "to": "de luxo" },
+      { "from": "Varanda gourmet", "to": "Varanda com churrasqueira" },
+      { "from": "Academia", "to": "Ginásio" },
+      { "from": "playground", "to": "parque infantil" },
+      { "from": "Gás encanado", "to": "Gás canalizado" },
+      { "from": "aquecedor a gás", "to": "esquentador" },
+      { "from": "IPTU", "to": "IMI" }
+    ],
+    "protected_facts": ["24h"]
+  },
+  {
+    "id": "numeros-pt-br",
+    "field": "narracao",
+    "input": "Apresentamos um apartamento com dezesseis metros quadrados de varanda e dezenove metros de frente, a quatorze minutos do centro. O preço é de trezentos mil euros.",
+    "expected_fixes": [
+      { "from": "dezesseis", "to": "dezasseis" },
+      { "from": "dezenove", "to": "dezanove" },
+      { "from": "quatorze", "to": "catorze" }
+    ],
+    "protected_facts": ["trezentos mil euros"]
+  },
+  {
+    "id": "proclise-inicial",
+    "field": "descricao",
+    "input": "Se trata de um T3 com 110 m² em Coimbra. Lhe garantimos uma visita sem compromisso. Nos contate para mais detalhes.",
+    "expected_fixes": [
+      { "from": "Se trata", "to": "Trata-se" },
+      { "from": "Lhe garantimos", "to": "Garantimos-lhe" },
+      { "from": "Nos contate", "to": "Contacte-nos" }
+    ],
+    "protected_facts": ["T3", "110 m²", "Coimbra"]
+  },
+  {
+    "id": "sem-erros",
+    "field": "descricao",
+    "input": "Este T3 de 125 m² em Braga está pronto a habitar. Tem garagem fechada, arrecadação e lavandaria, e o certificado energético é de classe C. Trata-se de uma oportunidade sólida no centro da cidade.",
+    "expected_fixes": [],
+    "protected_facts": ["T3", "125 m²", "Braga", "classe C"]
+  }
+]

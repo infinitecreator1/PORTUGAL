@@ -1,0 +1,64 @@
+# Local development stack.
+#   docker compose -f infra/docker/docker-compose.dev.yml up postgres
+#   DATABASE_URL=postgres://postgres:postgres@localhost:54322/postgres pnpm db:migrate
+# Optional profiles:
+#   --profile amalia   runs AMALIA locally with llama.cpp (GGUF Q8, CPU or CUDA) for offline gate tests
+#   --profile app      runs api + worker from the Cloud Run Dockerfiles
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "54322:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  amalia-llamacpp:
+    profiles: ["amalia"]
+    image: ghcr.io/ggml-org/llama.cpp:server
+    command: >
+      -hf layerx-labs/AMALIA-9B-0626-DPO-GGUF:Q8_0
+      --host 0.0.0.0 --port 8080 -c 8192 --jinja
+    ports:
+      - "8080:8080"
+    volumes:
+      - llamacache:/root/.cache/llama.cpp
+
+  api:
+    profiles: ["app"]
+    build:
+      context: ../..
+      dockerfile: infra/cloudrun/Dockerfile.api
+    env_file: ../../.env
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432/postgres
+      API_PORT: "3000"
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  worker:
+    profiles: ["app"]
+    build:
+      context: ../..
+      dockerfile: infra/cloudrun/Dockerfile.worker
+    env_file: ../../.env
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432/postgres
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  pgdata:
+  llamacache:

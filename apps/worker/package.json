@@ -1,0 +1,31 @@
+{
+  "name": "@imovel/worker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "pg-boss worker: generate, gate, narrate, publish, ingest; state machine.",
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "dev": "tsx watch src/main.ts",
+    "start": "tsx src/main.ts",
+    "build": "tsup src/main.ts --format esm --target node22 --out-dir dist --clean"
+  },
+  "dependencies": {
+    "@imovel/core": "workspace:*",
+    "@imovel/db": "workspace:*",
+    "@imovel/ingestion": "workspace:*",
+    "@imovel/llm": "workspace:*",
+    "@imovel/observability": "workspace:*",
+    "@imovel/ptpt-qa": "workspace:*",
+    "@imovel/storage": "workspace:*",
+    "@imovel/tts": "workspace:*",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "tsup": "^8.3.5",
+    "tsx": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  }
+}

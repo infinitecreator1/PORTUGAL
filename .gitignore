@@ -1,0 +1,31 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# builds
+dist/
+build/
+coverage/
+*.tsbuildinfo
+
+# env and secrets
+.env
+.env.*
+!.env.example
+
+# local artefacts
+out/
+tmp/
+evals/reports/
+*.log
+
+# editors and OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+
+# python (RunPod worker)
+__pycache__/
+*.pyc
+.venv/

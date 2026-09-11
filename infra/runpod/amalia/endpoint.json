@@ -1,0 +1,36 @@
+{
+  "_comment": "RunPod Serverless endpoint definition for AMALIA-9B-0626-DPO on the official vLLM worker. Create the endpoint in the RunPod console (Serverless → New Endpoint → vLLM quick deploy) or via the GraphQL API using these values.",
+  "name": "amalia-9b-dpo",
+  "image": "runpod/worker-v1-vllm:stable-cuda12.1.0",
+  "gpuIds": "NVIDIA A40,NVIDIA RTX A6000,NVIDIA L40S",
+  "gpuCount": 1,
+  "workersMin": 0,
+  "workersMax": 3,
+  "idleTimeoutSeconds": 120,
+  "executionTimeoutMs": 300000,
+  "flashboot": true,
+  "networkVolume": {
+    "sizeGb": 40,
+    "mountPath": "/runpod-volume",
+    "purpose": "Hugging Face cache so a fresh worker does not re-download the 18 GB bf16 weights."
+  },
+  "env": {
+    "MODEL_NAME": "amalia-llm/AMALIA-9B-0626-DPO",
+    "HF_HOME": "/runpod-volume/hf",
+    "DTYPE": "bfloat16",
+    "MAX_MODEL_LEN": "8192",
+    "MAX_NUM_SEQS": "16",
+    "GPU_MEMORY_UTILIZATION": "0.92",
+    "ENABLE_PREFIX_CACHING": "1",
+    "OPENAI_SERVED_MODEL_NAME_OVERRIDE": "amalia-llm/AMALIA-9B-0626-DPO",
+    "MAX_CONCURRENCY": "16",
+    "DEFAULT_MAX_TOKENS": "1500"
+  },
+  "openaiBaseUrl": "https://api.runpod.ai/v2/<ENDPOINT_ID>/openai/v1",
+  "notes": [
+    "bf16 weights are 18.3 GB; a 24 GB card leaves too little KV cache at MAX_MODEL_LEN 8192, so the 48 GB tier is the default (A40 $1.22/h flex is the cheapest).",
+    "For a 24 GB tier (L4 $0.69/h) run the AWQ int4 spike first: QUANTIZATION=awq with a quantised checkpoint, and confirm the editor golden set does not regress.",
+    "The ChatML chat template is embedded in the tokenizer; no CUSTOM_CHAT_TEMPLATE needed.",
+    "Keep workersMin at 1 during business hours in production for predictable latency; leave 0 for the MVP."
+  ]
+}

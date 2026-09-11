@@ -1,0 +1,35 @@
+{
+  "name": "@imovel/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Fastify API: import listings, run jobs, fetch outputs, reviews, webhooks.",
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "dev": "tsx watch src/main.ts",
+    "start": "tsx src/main.ts",
+    "build": "tsup src/main.ts --format esm --target node22 --out-dir dist --clean"
+  },
+  "dependencies": {
+    "@imovel/core": "workspace:*",
+    "@imovel/db": "workspace:*",
+    "@imovel/ingestion": "workspace:*",
+    "@imovel/llm": "workspace:*",
+    "@imovel/observability": "workspace:*",
+    "@imovel/ptpt-qa": "workspace:*",
+    "@imovel/storage": "workspace:*",
+    "@imovel/tts": "workspace:*",
+    "zod": "catalog:",
+    "@fastify/rate-limit": "^10.2.1",
+    "@fastify/swagger": "^9.4.0",
+    "fastify": "^5.2.0",
+    "fastify-type-provider-zod": "^4.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "tsup": "^8.3.5",
+    "tsx": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  }
+}

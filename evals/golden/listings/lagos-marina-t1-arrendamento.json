@@ -1,0 +1,37 @@
+{
+  "id": "lagos-marina-t1-arrendamento",
+  "listing": {
+    "source": "csv-feed",
+    "source_id": "LGS-2026-0142",
+    "ownership": "owned",
+    "transaction": "rent",
+    "property_type": "apartamento",
+    "typology": "T1",
+    "price": 1250,
+    "price_period": "month",
+    "area": { "gross_m2": 68, "useful_m2": 60, "plot_m2": null },
+    "floor": "2",
+    "year_built": 2019,
+    "bathrooms": 1,
+    "condition": "novo",
+    "location": {
+      "district": "Faro",
+      "municipality": "Lagos",
+      "parish": "São Gonçalo de Lagos",
+      "neighbourhood": "Marina",
+      "address": "Avenida dos Descobrimentos",
+      "postal_code": "8600-645",
+      "lat": 37.101,
+      "lng": -8.674
+    },
+    "features": ["varanda", "elevador", "ar_condicionado", "piscina", "mobilado", "estacionamento"],
+    "features_raw": ["Varanda", "Elevador", "Ar condicionado", "Piscina", "Mobilado", "Estacionamento"],
+    "energy_certificate": "A",
+    "photos": [{ "url": "https://example.org/photos/lgs-0142-1.jpg", "room": "sala", "order": 0 }],
+    "agent": { "name": "Pedro Costa", "agency": "Algarve Rentals", "agency_id": "algarve-rentals", "phone": "+351 961 444 555", "email": "pedro@example.org" },
+    "description_original": "T1 mobilado junto à marina de Lagos, com piscina e estacionamento, disponível para arrendamento.",
+    "language_original": "pt-PT"
+  },
+  "reference": null,
+  "notes": "Rental: must say 'arrendamento' and '1 250 €/mês', never 'aluguel'; 'mobilado' not 'mobiliado'; audience arrendatários."
+}

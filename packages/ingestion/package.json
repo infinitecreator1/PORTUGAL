@@ -1,0 +1,30 @@
+{
+  "name": "@imovel/ingestion",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Listing sources (CSV/XML feeds, Casafari, Parse.bot Imovirtual, Piloterr Idealista), normalisers, PII policy, dedup, rate limiting, runner.",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@imovel/core": "workspace:*",
+    "bottleneck": "^2.19.5",
+    "fast-xml-parser": "^4.5.0",
+    "papaparse": "^5.4.1",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+,
+    "@types/papaparse": "^5.3.15"
+  }
+}

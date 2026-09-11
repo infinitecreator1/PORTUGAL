@@ -1,0 +1,129 @@
+# Cloud Run services for the API and the worker (europe-west1).
+# Deploy: gcloud run services replace infra/cloudrun/service.yaml --region europe-west1
+# Secrets are referenced from Secret Manager; create them first:
+#   gcloud secrets create DATABASE_URL --data-file=- <<< "$DATABASE_URL"
+#   (same for GEMINI_API_KEY, RUNPOD_API_KEY, SUPABASE_S3_ACCESS_KEY_ID, SUPABASE_S3_SECRET_ACCESS_KEY, WEBHOOK_SIGNING_SECRET)
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: imovel-api
+  annotations:
+    run.googleapis.com/ingress: all
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: "1"
+        autoscaling.knative.dev/maxScale: "10"
+        run.googleapis.com/cpu-throttling: "true"
+    spec:
+      containerConcurrency: 80
+      timeoutSeconds: 60
+      containers:
+        - image: europe-west1-docker.pkg.dev/PROJECT_ID/imovel/api:latest
+          ports:
+            - containerPort: 3000
+          resources:
+            limits:
+              cpu: "1"
+              memory: 512Mi
+          env:
+            - name: NODE_ENV
+              value: production
+            - name: API_PORT
+              value: "3000"
+            - name: LLM_PROVIDER
+              value: gemini
+            - name: GATE_EDITOR
+              value: amalia
+            - name: TTS_PROVIDER
+              value: voxcpm2-runpod
+            - name: STORAGE_PROVIDER
+              value: supabase-s3
+            - name: SUPABASE_S3_ENDPOINT
+              value: https://PROJECT_REF.supabase.co/storage/v1/s3
+            - name: SUPABASE_S3_BUCKET
+              value: pipeline-artifacts
+            - name: RUNPOD_AMALIA_ENDPOINT_ID
+              value: REPLACE_ME
+            - name: RUNPOD_VOXCPM2_ENDPOINT_ID
+              value: REPLACE_ME
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef: { name: DATABASE_URL, key: latest }
+            - name: GEMINI_API_KEY
+              valueFrom:
+                secretKeyRef: { name: GEMINI_API_KEY, key: latest }
+            - name: RUNPOD_API_KEY
+              valueFrom:
+                secretKeyRef: { name: RUNPOD_API_KEY, key: latest }
+            - name: SUPABASE_S3_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef: { name: SUPABASE_S3_ACCESS_KEY_ID, key: latest }
+            - name: SUPABASE_S3_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef: { name: SUPABASE_S3_SECRET_ACCESS_KEY, key: latest }
+            - name: WEBHOOK_SIGNING_SECRET
+              valueFrom:
+                secretKeyRef: { name: WEBHOOK_SIGNING_SECRET, key: latest }
+---
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: imovel-worker
+  annotations:
+    run.googleapis.com/ingress: internal
+spec:
+  template:
+    metadata:
+      annotations:
+        # The worker polls pg-boss; keep one instance always on and never throttle its CPU.
+        autoscaling.knative.dev/minScale: "1"
+        autoscaling.knative.dev/maxScale: "4"
+        run.googleapis.com/cpu-throttling: "false"
+    spec:
+      containerConcurrency: 1
+      timeoutSeconds: 3600
+      containers:
+        - image: europe-west1-docker.pkg.dev/PROJECT_ID/imovel/worker:latest
+          resources:
+            limits:
+              cpu: "2"
+              memory: 2Gi
+          env:
+            - name: NODE_ENV
+              value: production
+            - name: LLM_PROVIDER
+              value: gemini
+            - name: GATE_EDITOR
+              value: amalia
+            - name: TTS_PROVIDER
+              value: voxcpm2-runpod
+            - name: STORAGE_PROVIDER
+              value: supabase-s3
+            - name: SUPABASE_S3_ENDPOINT
+              value: https://PROJECT_REF.supabase.co/storage/v1/s3
+            - name: SUPABASE_S3_BUCKET
+              value: pipeline-artifacts
+            - name: RUNPOD_AMALIA_ENDPOINT_ID
+              value: REPLACE_ME
+            - name: RUNPOD_VOXCPM2_ENDPOINT_ID
+              value: REPLACE_ME
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef: { name: DATABASE_URL, key: latest }
+            - name: GEMINI_API_KEY
+              valueFrom:
+                secretKeyRef: { name: GEMINI_API_KEY, key: latest }
+            - name: RUNPOD_API_KEY
+              valueFrom:
+                secretKeyRef: { name: RUNPOD_API_KEY, key: latest }
+            - name: SUPABASE_S3_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef: { name: SUPABASE_S3_ACCESS_KEY_ID, key: latest }
+            - name: SUPABASE_S3_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef: { name: SUPABASE_S3_SECRET_ACCESS_KEY, key: latest }
+            - name: WEBHOOK_SIGNING_SECRET
+              valueFrom:
+                secretKeyRef: { name: WEBHOOK_SIGNING_SECRET, key: latest }

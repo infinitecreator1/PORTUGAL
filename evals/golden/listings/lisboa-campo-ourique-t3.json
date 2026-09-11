@@ -1,0 +1,55 @@
+{
+  "id": "lisboa-campo-ourique-t3",
+  "listing": {
+    "source": "csv-feed",
+    "source_id": "LP-2026-0417",
+    "ownership": "owned",
+    "transaction": "sale",
+    "property_type": "apartamento",
+    "typology": "T3",
+    "price": 745000,
+    "price_period": "total",
+    "area": { "gross_m2": 132, "useful_m2": 118, "plot_m2": null },
+    "floor": "3",
+    "year_built": 1958,
+    "bathrooms": 2,
+    "condition": "renovado",
+    "location": {
+      "district": "Lisboa",
+      "municipality": "Lisboa",
+      "parish": "Campo de Ourique",
+      "neighbourhood": "Campo de Ourique",
+      "address": "Rua Ferreira Borges",
+      "postal_code": "1350-130",
+      "lat": 38.7167,
+      "lng": -9.1667
+    },
+    "features": ["varanda", "elevador", "arrecadacao", "garagem", "roupeiros", "vidros_duplos", "cozinha_equipada"],
+    "features_raw": ["Varanda", "Elevador", "Arrecadação", "Lugar de garagem", "Roupeiros", "Vidros duplos", "Cozinha equipada"],
+    "energy_certificate": "B-",
+    "photos": [
+      { "url": "https://example.org/photos/lp-0417-1.jpg", "room": "sala", "order": 0 },
+      { "url": "https://example.org/photos/lp-0417-2.jpg", "room": "cozinha", "order": 1 }
+    ],
+    "agent": { "name": "Marta Silva", "agency": "Lisboa Prime Mediação", "agency_id": "lisboa-prime", "phone": "+351 912 345 678", "email": "marta.silva@example.org" },
+    "description_original": "Apartamento T3 remodelado em 2021 em Campo de Ourique, com varanda, arrecadação e lugar de garagem.",
+    "language_original": "pt-PT"
+  },
+  "reference": {
+    "titulo": "Apartamento T3 remodelado com varanda e garagem em Campo de Ourique",
+    "resumo": "T3 com 118 m² úteis, totalmente remodelado em 2021, com varanda, arrecadação e lugar de garagem, num 3.º andar com elevador em Campo de Ourique.",
+    "descricao": "Este apartamento T3 ocupa o 3.º andar de um prédio com elevador em Campo de Ourique, um dos bairros mais procurados de Lisboa. Com 118 m² de área útil e 132 m² de área bruta, foi remodelado em 2021 com materiais de qualidade e mantém a traça original da década de 1950 nos pormenores que importam.\n\nA sala é ampla e luminosa e abre para uma varanda com exposição poente, ideal para o fim do dia. A cozinha está equipada e os três quartos dispõem de roupeiros embutidos. Há duas casas de banho completas, vidros duplos em toda a caixilharia e um certificado energético de classe B-.\n\nO imóvel inclui um lugar de garagem e uma arrecadação, dois bens raros nesta zona da cidade. Está pronto a habitar e adequa-se tanto a uma família como a quem procura um investimento sólido numa localização consolidada.",
+    "destaques": [
+      "Remodelado em 2021 com materiais de qualidade",
+      "Varanda com exposição solar poente",
+      "Lugar de garagem e arrecadação",
+      "Certificado energético B-",
+      "3.º andar com elevador"
+    ],
+    "localizacao": "Campo de Ourique é um bairro residencial consolidado, com comércio de rua, o Mercado de Campo de Ourique, escolas e transportes a curta distância. A Rua Ferreira Borges fica a poucos minutos a pé do Jardim da Parada.",
+    "cta": "Marque a sua visita com a Lisboa Prime Mediação e conheça este T3 pessoalmente.",
+    "narracao": "Apresentamos um apartamento T3 remodelado em Campo de Ourique, em Lisboa. Fica no terceiro andar de um prédio com elevador e tem 118 metros quadrados de área útil. Foi renovado em 2021 e conserva o carácter do edifício original. A sala abre para uma varanda virada a poente, a cozinha está equipada e os três quartos têm roupeiros embutidos. Conta com duas casas de banho, vidros duplos e certificado energético de classe B menos. Inclui lugar de garagem e arrecadação. O preço é de 745 000 €. Marque a sua visita com a Lisboa Prime Mediação.",
+    "factos_usados": ["typology", "area.useful_m2", "area.gross_m2", "floor", "condition", "features", "energy_certificate", "price", "location.parish", "agent.agency"]
+  },
+  "notes": "Canonical fixture. Old building, renovated, scarce garage in a dense Lisbon neighbourhood."
+}

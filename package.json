@@ -1,0 +1,36 @@
+{
+  "name": "imovel-em-voz",
+  "private": true,
+  "version": "0.1.0",
+  "description": "pt-PT property description and voice-over pipeline: Gemini writes, AMALIA gates, VoxCPM2 speaks.",
+  "type": "module",
+  "packageManager": "pnpm@10.33.0",
+  "engines": {
+    "node": ">=22.0.0",
+    "pnpm": ">=10.0.0"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "pnpm -r --workspace-concurrency=4 run typecheck",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "smoke": "pnpm --filter @imovel/cli run start -- smoke",
+    "eval:golden": "pnpm --filter @imovel/cli run start -- eval golden",
+    "eval:accent": "pnpm --filter @imovel/cli run start -- eval accent",
+    "api": "pnpm --filter @imovel/api run dev",
+    "worker": "pnpm --filter @imovel/worker run dev",
+    "cli": "pnpm --filter @imovel/cli run start --",
+    "db:generate": "pnpm --filter @imovel/db run generate",
+    "db:migrate": "pnpm --filter @imovel/db run migrate"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@types/node": "^22.10.2",
+    "eslint": "^9.17.0",
+    "globals": "^15.14.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.18.1",
+    "vitest": "^2.1.8"
+  }
+}

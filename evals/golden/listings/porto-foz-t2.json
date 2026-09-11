@@ -1,0 +1,37 @@
+{
+  "id": "porto-foz-t2",
+  "listing": {
+    "source": "csv-feed",
+    "source_id": "FOZ-2026-0088",
+    "ownership": "owned",
+    "transaction": "sale",
+    "property_type": "apartamento",
+    "typology": "T2",
+    "price": 520000,
+    "price_period": "total",
+    "area": { "gross_m2": 105, "useful_m2": 92, "plot_m2": null },
+    "floor": "5",
+    "year_built": 2009,
+    "bathrooms": 2,
+    "condition": "usado",
+    "location": {
+      "district": "Porto",
+      "municipality": "Porto",
+      "parish": "Aldoar, Foz do Douro e Nevogilde",
+      "neighbourhood": "Foz do Douro",
+      "address": "Rua do Passeio Alegre",
+      "postal_code": "4150-586",
+      "lat": 41.149,
+      "lng": -8.674
+    },
+    "features": ["varanda", "elevador", "garagem", "ar_condicionado", "vista_mar", "arrecadacao"],
+    "features_raw": ["Varanda", "Elevador", "Garagem", "Ar condicionado", "Vista de mar", "Arrecadação"],
+    "energy_certificate": "B",
+    "photos": [{ "url": "https://example.org/photos/foz-0088-1.jpg", "room": "sala", "order": 0 }],
+    "agent": { "name": "Rui Andrade", "agency": "Foz Imobiliária", "agency_id": "foz-imo", "phone": "+351 925 000 111", "email": "rui@example.org" },
+    "description_original": "T2 com vista de mar na Foz do Douro, quinto andar com elevador, garagem e arrecadação.",
+    "language_original": "pt-PT"
+  },
+  "reference": null,
+  "notes": "Sea view in Porto; tests place names (Foz, Douro) and 'vista de mar' phrasing without invented distances to the beach."
+}

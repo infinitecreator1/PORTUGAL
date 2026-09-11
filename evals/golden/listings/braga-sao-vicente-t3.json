@@ -1,0 +1,37 @@
+{
+  "id": "braga-sao-vicente-t3",
+  "listing": {
+    "source": "csv-feed",
+    "source_id": "BRG-2026-0509",
+    "ownership": "owned",
+    "transaction": "sale",
+    "property_type": "apartamento",
+    "typology": "T3",
+    "price": 295000,
+    "price_period": "total",
+    "area": { "gross_m2": 140, "useful_m2": 125, "plot_m2": null },
+    "floor": "1",
+    "year_built": 1998,
+    "bathrooms": 2,
+    "condition": "usado",
+    "location": {
+      "district": "Braga",
+      "municipality": "Braga",
+      "parish": "São Vicente",
+      "neighbourhood": null,
+      "address": "Rua de São Vicente",
+      "postal_code": "4710-300",
+      "lat": 41.553,
+      "lng": -8.424
+    },
+    "features": ["garagem", "arrecadacao", "aquecimento_central", "roupeiros", "varanda", "lavandaria"],
+    "features_raw": ["Garagem", "Arrecadação", "Aquecimento central", "Roupeiros", "Varanda", "Lavandaria"],
+    "energy_certificate": "C",
+    "photos": [{ "url": "https://example.org/photos/brg-0509-1.jpg", "room": "sala", "order": 0 }],
+    "agent": { "name": "Sofia Martins", "agency": "Minho Casas", "agency_id": "minho-casas", "phone": "+351 917 666 777", "email": "sofia@example.org" },
+    "description_original": "T3 no centro de Braga com garagem fechada, arrecadação e lavandaria, num primeiro andar.",
+    "language_original": "pt-PT"
+  },
+  "reference": null,
+  "notes": "Mid-market family flat; 'lavandaria' (pt-PT) is a lexicon trap (pt-BR lavanderia); energy class C must not be spun into a claim."
+}

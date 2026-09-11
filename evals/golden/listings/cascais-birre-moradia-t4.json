@@ -1,0 +1,41 @@
+{
+  "id": "cascais-birre-moradia-t4",
+  "listing": {
+    "source": "csv-feed",
+    "source_id": "CSC-2026-0301",
+    "ownership": "owned",
+    "transaction": "sale",
+    "property_type": "moradia",
+    "typology": "T4",
+    "price": 1490000,
+    "price_period": "total",
+    "area": { "gross_m2": 320, "useful_m2": 280, "plot_m2": 900 },
+    "floor": null,
+    "year_built": 2016,
+    "bathrooms": 4,
+    "condition": "usado",
+    "location": {
+      "district": "Lisboa",
+      "municipality": "Cascais",
+      "parish": "Cascais e Estoril",
+      "neighbourhood": "Birre",
+      "address": "Rua das Amoreiras",
+      "postal_code": "2750-640",
+      "lat": 38.712,
+      "lng": -9.438
+    },
+    "features": ["jardim", "piscina", "garagem", "paineis_solares", "aquecimento_central", "lareira", "condominio_fechado", "alarme"],
+    "features_raw": ["Jardim", "Piscina", "Garagem", "Painéis solares", "Aquecimento central", "Lareira", "Condomínio fechado", "Alarme"],
+    "energy_certificate": "A",
+    "photos": [
+      { "url": "https://example.org/photos/csc-0301-1.jpg", "room": "exterior", "order": 0 },
+      { "url": "https://example.org/photos/csc-0301-2.jpg", "room": "sala", "order": 1 },
+      { "url": "https://example.org/photos/csc-0301-3.jpg", "room": "piscina", "order": 2 }
+    ],
+    "agent": { "name": "Ana Ribeiro", "agency": "Cascais Living", "agency_id": "cascais-living", "phone": "+351 933 222 333", "email": "ana@example.org" },
+    "description_original": "Moradia T4 em condomínio fechado em Birre com piscina, jardim e painéis solares.",
+    "language_original": "pt-PT"
+  },
+  "reference": null,
+  "notes": "Premium detached house; watch for pt-BR jargon (alto padrão, área gourmet, lazer completo) and for the word 'moradia' instead of 'casa' or 'sobrado'."
+}

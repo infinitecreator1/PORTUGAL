@@ -1,0 +1,22 @@
+[
+  { "id": "a01", "text": "Este apartamento tem dezasseis metros quadrados de varanda virada a poente.", "shibboleths": ["dezasseis", "poente"] },
+  { "id": "a02", "text": "O prédio fica a dezanove minutos a pé da estação de comboios de Sete Rios.", "shibboleths": ["dezanove", "comboios"] },
+  { "id": "a03", "text": "A paragem do autocarro é mesmo à porta e o metro fica a duas ruas.", "shibboleths": ["autocarro", "metro"] },
+  { "id": "a04", "text": "A cozinha está equipada com frigorífico, placa e forno, e há uma lavandaria separada.", "shibboleths": ["frigorífico", "lavandaria"] },
+  { "id": "a05", "text": "No rés-do-chão há uma arrecadação e um lugar de garagem com portão automático.", "shibboleths": ["rés-do-chão", "arrecadação"] },
+  { "id": "a06", "text": "Estamos a preparar a documentação para que possa marcar a sua visita ainda esta semana.", "shibboleths": ["estamos a preparar"] },
+  { "id": "a07", "text": "O pequeno-almoço na varanda, com vista para o Tejo, é o melhor momento do dia.", "shibboleths": ["pequeno-almoço", "Tejo"] },
+  { "id": "a08", "text": "A moradia em Sintra tem catorze divisões, incluindo três casas de banho completas.", "shibboleths": ["catorze", "Sintra", "casas de banho"] },
+  { "id": "a09", "text": "Óbidos, Setúbal e Guimarães ficam a menos de duas horas de Lisboa.", "shibboleths": ["Óbidos", "Setúbal", "Guimarães"] },
+  { "id": "a10", "text": "O preço é de setecentos e quarenta e cinco mil euros, com certificado energético de classe B menos.", "shibboleths": ["setecentos", "B menos"] },
+  { "id": "a11", "text": "Trata-se de um T três remodelado em dois mil e vinte e um, pronto a habitar.", "shibboleths": ["Trata-se", "T três", "pronto a habitar"] },
+  { "id": "a12", "text": "Contacte-nos pelo telemóvel ou pelo correio eletrónico para mais informações.", "shibboleths": ["Contacte-nos", "telemóvel", "eletrónico"] },
+  { "id": "a13", "text": "A caixilharia de alumínio com vidros duplos garante excelente isolamento térmico.", "shibboleths": ["caixilharia", "excelente"] },
+  { "id": "a14", "text": "Em Algés e na Póvoa de Varzim, a procura por moradias com jardim tem crescido.", "shibboleths": ["Algés", "Póvoa de Varzim"] },
+  { "id": "a15", "text": "O pavimento flutuante e os roupeiros embutidos foram instalados há dezassete meses.", "shibboleths": ["dezassete", "roupeiros"] },
+  { "id": "a16", "text": "A renda é de mil duzentos e cinquenta euros por mês, com o condomínio incluído.", "shibboleths": ["renda", "por mês"] },
+  { "id": "a17", "text": "O esquentador a gás canalizado foi substituído e a canalização é nova.", "shibboleths": ["esquentador", "canalizado"] },
+  { "id": "a18", "text": "A vista desafogada sobre o Douro é a imagem de marca desta fração na Foz.", "shibboleths": ["desafogada", "Douro", "Foz"] },
+  { "id": "a19", "text": "Facto curioso: o edifício manteve a fachada original de mil novecentos e cinquenta e oito.", "shibboleths": ["Facto", "mil novecentos"] },
+  { "id": "a20", "text": "Peça já a sua simulação de crédito e receba a resposta em quarenta e oito horas.", "shibboleths": ["Peça", "a sua", "quarenta e oito"] }
+]
