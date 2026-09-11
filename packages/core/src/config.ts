@@ -51,6 +51,8 @@ export const ConfigSchema = z.object({
   CASAFARI_BASE_URL: z.string().url().default("https://api.casafari.com"),
 
   WEBHOOK_SIGNING_SECRET: z.string().default("change-me"),
+  /** Static API key for the single-tenant MVP. When unset in development, requests are attributed to DEFAULT_TENANT_ID. */
+  API_KEY: optionalString,
 
   OTEL_EXPORTER_OTLP_ENDPOINT: optionalUrl,
   OTEL_SERVICE_NAME: z.string().default("imovel-em-voz"),

@@ -16,6 +16,7 @@
     "@imovel/ingestion": "workspace:*",
     "@imovel/llm": "workspace:*",
     "@imovel/observability": "workspace:*",
+    "@imovel/pipeline": "workspace:*",
     "@imovel/ptpt-qa": "workspace:*",
     "@imovel/storage": "workspace:*",
     "@imovel/tts": "workspace:*",

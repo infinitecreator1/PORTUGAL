@@ -11,19 +11,20 @@
     "build": "tsup src/main.ts --format esm --target node22 --out-dir dist --clean"
   },
   "dependencies": {
+    "@fastify/rate-limit": "^10.2.1",
+    "@fastify/swagger": "^9.4.0",
     "@imovel/core": "workspace:*",
     "@imovel/db": "workspace:*",
     "@imovel/ingestion": "workspace:*",
     "@imovel/llm": "workspace:*",
     "@imovel/observability": "workspace:*",
+    "@imovel/pipeline": "workspace:*",
     "@imovel/ptpt-qa": "workspace:*",
     "@imovel/storage": "workspace:*",
     "@imovel/tts": "workspace:*",
-    "zod": "catalog:",
-    "@fastify/rate-limit": "^10.2.1",
-    "@fastify/swagger": "^9.4.0",
     "fastify": "^5.2.0",
-    "fastify-type-provider-zod": "^4.0.2"
+    "fastify-type-provider-zod": "^4.0.2",
+    "zod": "catalog:"
   },
   "devDependencies": {
     "@types/node": "catalog:",
